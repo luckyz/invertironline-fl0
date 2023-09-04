@@ -77,7 +77,7 @@ class SupabaseDatabase:
         return record
     
     
-def main():
+'''def main():
     db = SupabaseDatabase()
     id = db.get_following_id()
     date = db._get_date()
@@ -87,4 +87,4 @@ def main():
     db.insert_many(records)
 
 if '__main__' == __name__:
-    main()
+    main()'''

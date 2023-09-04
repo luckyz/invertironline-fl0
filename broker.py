@@ -98,7 +98,7 @@ class InvertirOnline:
             
         return lista
 
-def main():
+'''def main():
     iol = InvertirOnline()
 
     db = Database()
@@ -106,4 +106,4 @@ def main():
 
 
 if __name__ == '__main__':
-    main()
+    main()'''
