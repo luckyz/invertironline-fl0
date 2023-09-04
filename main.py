@@ -22,7 +22,7 @@ class Task:
         print('[+] Ejecutando InvertirOnline database backup & restore...')
         
     def execute(self):
-        gh = Github()
+        #gh = Github()
         
         iol = InvertirOnline()
         data = iol.portafolio()
@@ -32,7 +32,7 @@ class Task:
         db = SupabaseDatabase()
         db.insert_many(data)
 
-        gh.upload()
+        #gh.upload()
         
         self.welcome_message(clear=True)
         
