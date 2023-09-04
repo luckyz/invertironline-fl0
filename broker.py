@@ -5,8 +5,8 @@ import sys
 import os
 import time
 from dotenv import load_dotenv
-from database import Database
-from github import Github
+#from database import Database
+#from github import Github
 
 load_dotenv()
 
