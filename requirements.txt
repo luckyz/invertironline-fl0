@@ -25,7 +25,7 @@ pydantic_core==2.6.3
 python-dateutil==2.8.2
 python-dotenv==0.21.1
 pytz==2023.3
-realtime==1.0.0
+realtime==0.0.5
 requests==2.31.0
 schedule==1.2.0
 six==1.16.0
