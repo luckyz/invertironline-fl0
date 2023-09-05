@@ -23,7 +23,7 @@ postgrest==0.10.4
 pydantic==2.3.0
 pydantic_core==2.6.3
 python-dateutil==2.8.2
-python-dotenv==1.0.0
+python-dotenv==0.21.1
 pytz==2023.3
 realtime==1.0.0
 requests==2.31.0
