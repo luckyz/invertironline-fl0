@@ -1,10 +1,10 @@
 import os
 from flask import Flask, send_from_directory, render_template, redirect
-from main import plan
+import planning
 
 app = Flask(__name__)
 
-port = int(os.environ.get("PORT", 5000))
+port = int(os.environ.get('PORT', 5000))
 
 @app.route('/static/<path:path>')
 def serve_static(path):
@@ -12,7 +12,8 @@ def serve_static(path):
 
 @app.route('/')
 def home():
-    plan()
+    task = planning.Task()
+    task.execute(False)
     return render_template('index.html')
 
 @app.route('/<path:path>')
