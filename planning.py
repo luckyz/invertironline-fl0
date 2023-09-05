@@ -2,9 +2,7 @@ import schedule
 import time
 import os
 from broker import InvertirOnline
-from database import Database
 from supabase_database import SupabaseDatabase
-from pathlib import Path
 import argparse
 
 

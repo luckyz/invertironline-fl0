@@ -1,6 +1,6 @@
 import os
 from flask import Flask, send_from_directory, render_template, redirect
-import planning
+from planning import Task
 
 app = Flask(__name__)
 
@@ -12,8 +12,10 @@ def serve_static(path):
 
 @app.route('/')
 def home():
-    task = planning.Task()
+    render_template('index.html')
+    task = Task()
     task.execute(False)
+
     return render_template('index.html')
 
 @app.route('/<path:path>')
