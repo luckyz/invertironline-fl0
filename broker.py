@@ -5,8 +5,6 @@ import sys
 import os
 import time
 from dotenv import load_dotenv
-#from database import Database
-#from github import Github
 
 load_dotenv()
 
@@ -31,7 +29,7 @@ class InvertirOnline:
                 }
 
             if show:
-                self.borrarPant()
+                self.clear_screen()
 
             r = requests.post('https://api.invertironline.com/token', data=_data)
             self.token = 'Bearer ' + str(json.loads(r.text)['access_token'])
@@ -46,12 +44,12 @@ class InvertirOnline:
                 }
 
             if show:
-                self.borrarPant()
+                self.clear_screen()
 
             r = requests.post('https://api.invertironline.com/token', data=_data)
             self.token = 'Bearer ' + str(json.loads(r.text)['access_token'])
 
-    def borrarPant(self):
+    def clear_screen(self):
         if os.name == 'posix':
             os.system('clear')
         elif os.name == 'ce' or os.name == 'nt' or os.name == 'dos':
@@ -97,13 +95,3 @@ class InvertirOnline:
             n += 1
             
         return lista
-
-'''def main():
-    iol = InvertirOnline()
-
-    db = Database()
-    db.add_dict_data(iol.portafolio())
-
-
-if __name__ == '__main__':
-    main()'''

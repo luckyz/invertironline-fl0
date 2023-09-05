@@ -20,23 +20,21 @@ class SupabaseDatabase:
         
     def _generate_timestamp(self):
         '''Gets current date and time'''
-        fecha_hora_actual = datetime.now()
+        current_datatime = datetime.now()
 
-        # formatear la fecha y hora como una cadena para usar como nombre de archivo
-        formato = '%Y-%m-%d_%H-%M-%S'  # Cambia el formato según tus necesidades
-        nombre_archivo = fecha_hora_actual.strftime(formato)
+        format = '%Y-%m-%d_%I-%M-%S_%p'.lower()
+        filename = current_datatime.strftime(format)
 
-        return nombre_archivo
+        return filename
     
     def _get_date(self):
         return datetime.now().strftime('%Y-%m-%d')
 
     def current_datetime(self):
-        fecha_hora_actual = datetime.now()
-        hora = fecha_hora_actual.astimezone(
-         pytz.timezone('America/Argentina/Buenos_Aires')).strftime('%H:%M')
+        current_datatime = datetime.now()
+        time_now = current_datatime.astimezone(pytz.timezone('America/Argentina/Buenos_Aires')).strftime('%I:%M %p')
 
-        return f'[{hora} hs]'
+        return f'[{time_now}]'
         
     def count(self):
         return self.supabase.table(self.table).select('count').execute()
@@ -51,8 +49,7 @@ class SupabaseDatabase:
         self.supabase.table(self.table).delete().eq(field, value).execute()
         
     def insert_many(self, data, show=True):
-        for i, record in enumerate(data):
-            self.insert(record)
+        self.supabase.table(self.table).upsert(data).execute()
             
         if len(data) > 1:
             print(f'{self.current_datetime()} Saved {len(data)} records')
@@ -75,16 +72,3 @@ class SupabaseDatabase:
         }
         
         return record
-    
-    
-'''def main():
-    db = SupabaseDatabase()
-    id = db.get_following_id()
-    date = db._get_date()
-    records = []
-    for i, x in enumerate(range(10)):
-        records.append(db.test_record(i + 10, date))
-    db.insert_many(records)
-
-if '__main__' == __name__:
-    main()'''
